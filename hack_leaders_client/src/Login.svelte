@@ -3,11 +3,11 @@
 
 	let user = {
 		user_type: params.user_type,
-		login: "",
+		username: "",
 		password: "",
 	}
 
-	let check = true;
+	let check = false;
 
 	function checkUser(){
 		// проверка на существование
@@ -25,7 +25,7 @@
 </script>
 
 <div>
-	<input type="text" name="login" bind:value={user.login} placeholder="Логин" on:change={checkUser}>
+	<input type="text" name="login" bind:value={user.username} placeholder="Логин" on:change={checkUser}>
 	<input type="password" name="password" bind:value={user.password} placeholder="Пароль">
 	{#if check}
 		<button on:click={signIn}>Войти</button>
