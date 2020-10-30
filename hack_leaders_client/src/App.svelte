@@ -4,7 +4,6 @@
 	import ErrorPage from './routing/ErrorPage.svelte'
 	import StudentHome from './routing/student/StudentHome.svelte'
 	import TeacherHome from './routing/teacher/TeacherHome.svelte'
-	import Registration from './Registration.svelte'
 	import Login from './Login.svelte'
 
 	// export let params; если надо в компоненте получить параметры со ссылки (:id / :user / :params)
@@ -14,22 +13,11 @@
 	router('/', () => (page = Home));
 	router('/student/home', () => (page = StudentHome));
 	router('/teacher/home', () => (page = TeacherHome));
-	router('/reg', () => (page = Registration));
-	router('/log', () => (page = Login));
-	// router('/users/:id', (ctx, next) => {params = ctx.params; next();},() => (page = User));
+	router('/login/:user', (ctx, next) => {params = ctx.params; next();} () => (page = Login));
 	router("*", () => (page = ErrorPage));
 
 	router.start();
 </script>
-
-<ul>
-	<li><a href="/">Home</a></li>
-	<li><a href="/reg">Регистрация</a></li>
-	<li><a href="/log">Вход</a></li>
-	<li><a href="/student/home">Учитель</a></li>
-	<li><a href="/teacher/home">Ученик</a></li>
-	<!-- <li><a href="/users/:id">Пользователь с id id</a></li> -->
-</ul>
 
 <svelte:component this="{page}" params="{params}" />
 
