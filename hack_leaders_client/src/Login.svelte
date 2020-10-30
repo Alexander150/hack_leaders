@@ -3,17 +3,36 @@
 
 	let user = {
 		user_type: params.user_type,
+		login: "",
+		password: "",
+	}
+
+	let check = true;
+
+	function checkUser(){
+		// проверка на существование
+		console.log("undef");
+	}
+	function signUp(){
+		// send user to server to sign up him
+		console.log(user);
+	}
+	function signIn(){
+		// send user to server to sign in him
+		console.log(user);
 	}
 
 </script>
 
 <div>
-	{#if params.user_type == "teacher"}
-		<div>Учитель</div>
+	<input type="text" name="login" bind:value={user.login} placeholder="Логин" on:change={checkUser}>
+	<input type="password" name="password" bind:value={user.password} placeholder="Пароль">
+	{#if check}
+		<button on:click={signIn}>Войти</button>
+	{:else}
+		<button on:click={signUp}>Зарегистироваться</button>
 	{/if}
-	{#if params.user_type == "student"}
-		<div>Ученик</div>
-	{/if}
+
 </div>
 
 <style type="text/css" media="screen">
