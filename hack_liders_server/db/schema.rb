@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_30_174702) do
+ActiveRecord::Schema.define(version: 2020_10_30_194719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,11 +41,10 @@ ActiveRecord::Schema.define(version: 2020_10_30_174702) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "teachers", force: :cascade do |t|
-    t.string "login"
-    t.string "email"
-    t.string "password"
-    t.string "password_confirmation"
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.string "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
