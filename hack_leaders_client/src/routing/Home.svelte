@@ -1,8 +1,8 @@
-<a href="/teacher/login">
+<a href="/login/teacher">
 	<div class="teacher">
 	</div>
 </a>
-<a href="/student/login">
+<a href="/login/student">
 	<div class="student">
 	</div>
 </a>
