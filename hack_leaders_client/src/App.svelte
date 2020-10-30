@@ -13,7 +13,7 @@
 	router('/', () => (page = Home));
 	router('/student/home', () => (page = StudentHome));
 	router('/teacher/home', () => (page = TeacherHome));
-	router('/login/:user', (ctx, next) => {params = ctx.params; next();} () => (page = Login));
+	router('/login/:user', (ctx, next) => {params = ctx.params; next();}, () => (page = Login));
 	router("*", () => (page = ErrorPage));
 
 	router.start();
