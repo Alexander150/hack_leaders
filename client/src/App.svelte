@@ -42,7 +42,7 @@
 		'/student/check'
 	];
 	const user_sub = user_store.subscribe(data => {
-		if (!isToken() || !data.id) {
+		if (!isToken() || !data) {
 			if (logged_only.includes(router.current))
 				router.redirect(`/`);
 		}
