@@ -19,14 +19,23 @@
     task_id: params.id,
   }
 
+  let langs = [];
+
   onMount(async () => {
     let response = await fetch("http://localhost:3000/tasks/" + params.id, {
       method: "GET",
       headers: headers
     });
+    let response2 = await fetch("http://localhost:3000/langs", {
+      method: "GET",
+      headers: headers
+    });
     let answer = await response.json();
+    let answer2 = await.response2.json();
     task = answer.task;
+    langs = answer2.langs;
     parameters.code = task.start_point;
+
   });
 
   let answers;

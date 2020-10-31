@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   post '/tasks/check', to: "tasks#check"
   get "tasks/:id", to: "tasks#get_task"
   get 'tasks', to: "tasks#get_tasks"
+  get '/langs', to: 'languages#get_languages'
 end
