@@ -23,6 +23,9 @@
 				<label> Проверка:</label>
 				<textarea class="solution__text"></textarea>
 			</div>
+			<div class="solution__buttonbar">
+				
+			</div>
 		 </div>
 	</div>
 </div>	
@@ -54,8 +57,10 @@
   	width: 95%;
   }
   .solution__test textarea {
+  	color: white;
+  	border: 3px solid #F1F4F7;
   	border-radius: 5px;
-  	background: #EFEFEF;
+  	background: #2C2C2C;
   	resize: none;
   	width: 100%;
   	height: 300px;
@@ -67,19 +72,23 @@
    	margin-top:calc(40px - 10px + 5px - 1em);
   }
   .solution__codemirror textarea {
+  	color: white;
   	border-radius: 5px;
-  	background: #EFEFEF;
+  	background: #2C2C2C;
+  	border: 3px solid #F1F4F7;
   	resize: none;
   	width: 100%;
   	height: 400px;
   	margin: 10px 0;
   }
   .task__description{
+  	color: white;
+  	border: 3px solid #F1F4F7;
   	text-align: left;
   	height: 100%;
   	max-height: 810px;
   	border-radius: 5px;
-  	background: #EFEFEF;
+  	background: #2C2C2C;
   	padding: 40px;
   }
   .task h1{
