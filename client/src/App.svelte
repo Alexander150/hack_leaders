@@ -13,6 +13,10 @@
 	// export let params; если надо в компоненте получить параметры со ссылки (:id / :user / :params)
 
 	setContext('server_url', "http://localhost:3000/");
+	setContext('std_headers', {
+		'Accept': 'application/json',
+	    'Content-Type': 'application/json'
+	});
 
 	let page;
 	let params;
@@ -22,6 +26,7 @@
 			return true;
 		}
 	}
+
 	router('/', () => (page = Home));
 	router('/student/home', () => (page = StudentHome));
 	router('/teacher/home', () => (page = TeacherHome));
