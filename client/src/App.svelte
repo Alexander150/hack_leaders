@@ -1,6 +1,7 @@
 <script>
 	import router from 'page';
 	import { setContext } from 'svelte';
+	import Cookies from 'js-cookie';
 
 	import Home from './routing/Home.svelte'
 	import ErrorPage from './routing/ErrorPage.svelte'
@@ -14,10 +15,20 @@
 
 	let page;
 	let params;
+	function isToken() {
+		let token = Cookies.get('token');
+		if (token) {
+			return true;
+		}
+	}
 	router('/', () => (page = Home));
 	router('/student/home', () => (page = StudentHome));
 	router('/teacher/home', () => (page = TeacherHome));
-	router('/login/:user_type', (ctx, next) => {params = ctx.params; next();}, () => (page = Login));
+	router('/login/:user_type', (ctx, next) => {params = ctx.params; next();}, () => {
+		if (isToken()) {
+			router.redirect('/')
+		}
+		page = Login;});
 	router("*", () => (page = ErrorPage));
 
 	router.start();
