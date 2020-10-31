@@ -1,11 +1,13 @@
 <script>
 	import { getContext } from 'svelte';
 	import Cookies from 'js-cookie';
-	import { user_store } from './user.store.js';
+	import { user_store } from './stores/user.store.js';
+	import router from 'page';
 
 	export let params;
 
 	const server_url = getContext('server_url');
+	let headers = getContext('std_headers');
 
 	let user = {
 		user_type: params.user_type,
@@ -16,11 +18,6 @@
 	let check = {
 		status: true,
 		type: true
-	};
-
-	let headers = {
-		'Accept': 'application/json',
-	    'Content-Type': 'application/json'
 	};
 
 	async function checkUser(){
@@ -47,13 +44,20 @@
 		});
 		if (response.ok) {
 			let result = await response.json();
-			if (token in result) {
+			if ('token' in result) {
 				Cookies.set('token', result.token);
-				user_store.update(result.user);
+				user_store.update(state => result.user);
+				router.redirect('/')
+				return;
+
+			} else if ('error' in result) {
+				Cookies.remove('token');
+				alert(result.error);
 				return;
 			}
 		}
 
+		Cookies.remove('token');
 		alert("Возникла ошибка");
 	}
 
