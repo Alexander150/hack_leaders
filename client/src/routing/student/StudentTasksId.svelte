@@ -1,5 +1,5 @@
 <script>
-  import Logout from '../../components/Logout.svelte';
+ // import Logout from '../../components/Logout.svelte';
   import {onMount} from 'svelte';
   import { getContext } from 'svelte';
   let headers = getContext('std_headers');
@@ -44,14 +44,16 @@
 
 </script>
 <div class="coderoom">
-  <Logout/>
+  <!-- <Logout/> -->
 	<div class="student__task">	
 		<div class="task">
 			<h1>{task.title}</h1>
-      {#if task.legend}
-        <div>{task.legend}</div> <!-- РАСИМ ПОПРАВЬ ЛЕГЕНДУ, ЧТОБЫ ОНА БЫЛА ДО ОПИСАНИЯ -->
-      {/if}
-			<div class="task__description">{task.description}</div>
+			<div class="task__block">
+        {#if task.legend}
+          <div class="task__legend">{task.legend}</div> <!-- РАСИМ ПОПРАВЬ ЛЕГЕНДУ, ЧТОБЫ ОНА БЫЛА ДО ОПИСАНИЯ -->
+        {/if}
+        <div class="task__description">{task.description}</div>
+      </div>
 		</div>   
 		<div class="solution"> 
 			<div class="solution__codemirror">
@@ -86,7 +88,7 @@
   	display: grid;
   	grid-template-areas: 
   	"task solution";
-  	grid-template-columns: 1fr 1fr;
+  	grid-template-columns: 1fr 1fr ;
   }
   .task{
   	grid-area: "task";
@@ -121,7 +123,7 @@
   	height: 400px;
   	margin: 10px 0;
   }
-  .task__description{
+  .task__block{
   	color: white;
   	border: 3px solid #F1F4F7;
   	text-align: left;

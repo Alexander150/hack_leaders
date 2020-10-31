@@ -71,14 +71,8 @@
 	{:else}
 		<button on:click={signUp}>Зарегистироваться</button>
 	{/if}
-	{#if !check.type}
-		<a href="/login/student">Войти как ученик</a>
-	{/if}
 </div>
 
 <style type="text/css" media="screen">
-	.rasim-huilan{
-
-	}
 	
 </style>
