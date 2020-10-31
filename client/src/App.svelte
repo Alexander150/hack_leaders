@@ -31,11 +31,15 @@
 	router('/student/home', () => (page = StudentHome));
 	router('/teacher/home', () => (page = TeacherHome));
 	router('/student/check', () => (page = Check));
+	router('/login', () => {
+		router.redirect('/')
+	});
 	router('/login/:user_type', (ctx, next) => {params = ctx.params; next();}, () => {
 		if (isToken()) {
 			router.redirect('/')
 		}
-		page = Login;});
+		page = Login;
+	});
 	router("*", () => (page = ErrorPage));
 
 	router.start();
