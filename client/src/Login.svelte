@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 	import Cookies from 'js-cookie';
-	import { user_store } from './user.store.js';
+	import { user_store } from './stores/user.store.js';
 
 	export let params;
 

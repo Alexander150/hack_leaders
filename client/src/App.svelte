@@ -21,6 +21,7 @@
 			return true;
 		}
 	}
+
 	router('/', () => (page = Home));
 	router('/student/home', () => (page = StudentHome));
 	router('/teacher/home', () => (page = TeacherHome));
