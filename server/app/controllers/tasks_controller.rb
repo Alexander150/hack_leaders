@@ -6,6 +6,11 @@ class TasksController < ApplicationController
 		render json: {task: @task}
 	end
 
+	def get_tasks
+		@tasks = Task.all
+		render json: {tasks: @tasks}
+	end
+
 	def check
 		file = File.open('tmp/their_code.py', 'w')
 		file.print(params[:code])

@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/auto_login', to: "users#auto_login"
   post '/tasks/check', to: "tasks#check"
   get "tasks/:id", to: "tasks#get_task"
+  get 'tasks', to: "tasks/get_tasks"
 end
