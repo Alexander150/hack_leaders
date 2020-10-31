@@ -1,5 +1,22 @@
 class TasksController < ApplicationController
 
+	def create
+		@task = Task.create!(
+			title: params[:task][:title],
+			legend: params[:task][:legend],
+			description: params[:task][:description],
+			start_point: "def f(a,b):\n    //Ваш код")
+		if @task
+			task_id = @task.id
+			params[:tests].each do |t|
+				@test = Test.create!(task_id: task_id, inputs: t[:inputs], outputs: t[:outputs])
+			end
+			render json: {status: "Задача успешно создана"}
+		else
+			render json: {status: "Неудалось создать задачу"}
+		end
+	end
+
 	def get_task
 		@task = Task.find(params[:id])
 
@@ -56,7 +73,6 @@ class TasksController < ApplicationController
 		answer = `#{cmd} /tmp/ours_code#{postfix}`
 		answer_arr = answer.split("\n")
 		@tests.order(id: :asc).each_with_index do |t, i|
-			puts answer_arr[i]
 			if t.outputs == answer_arr[i]
 				answer_arr[i] = "Test(f(" + t.inputs + "), " + t.outputs + ")"
 			else
