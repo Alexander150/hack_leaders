@@ -7,7 +7,7 @@
 
 	import Home from './routing/Home.svelte'
 	import ErrorPage from './routing/ErrorPage.svelte'
-	import StudentHome from './routing/student/StudentHome.svelte'
+	import StudentTasksId from './routing/student/StudentTasksId.svelte'
 	import StudentTasks from './routing/student/StudentTasks.svelte'
 	import TeacherHome from './routing/teacher/TeacherHome.svelte'
 	import Login from './Login.svelte'
@@ -58,7 +58,7 @@
 		if (!isToken())
 			router.redirect('/');
 		else
-			page = StudentHome});
+			page = StudentTasksId});
 	router('/student/tasks', () => {
 		if (!isToken())
 			router.redirect('/');
