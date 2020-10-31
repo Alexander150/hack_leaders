@@ -1,4 +1,5 @@
 <script>
+	import { beforeUpdate, afterUpdate } from 'svelte';
 	import { getContext } from 'svelte';
 	let headers = getContext('std_headers');
 	import { tokenizeHeaders } from '../../helpers/user.helper.js';
@@ -10,42 +11,6 @@
 		description: ""
 	};
 	let tests = [
-		{
-			inputs: "",
-			outputs: ""
-		},
-		{
-			inputs: "",
-			outputs: ""
-		},
-		{
-			inputs: "",
-			outputs: ""
-		},
-		{
-			inputs: "",
-			outputs: ""
-		},
-		{
-			inputs: "",
-			outputs: ""
-		},
-		{
-			inputs: "",
-			outputs: ""
-		},
-		{
-			inputs: "",
-			outputs: ""
-		},
-		{
-			inputs: "",
-			outputs: ""
-		},
-		{
-			inputs: "",
-			outputs: ""
-		},
 		{
 			inputs: "",
 			outputs: ""
@@ -65,6 +30,10 @@
 		let answer = await response.json();
 		error = answer.status;
 	}
+	function createTest(){
+		tests = [...tests, {inputs: "", outputs: ""}]
+	}
+
 </script>
 <div>
 	<div class="tasks__creator">
@@ -82,9 +51,10 @@
 			<label> Выходные данные:</label>
 			<input type="text" class="output" bind:value={test.outputs}>
 		</div>
-	{/each}									
-<button on:click={createTask}>Создать</button>	
-{error}		
+	{/each}	
+	<button on:click={createTest}>Создать новый тест</button>	
+	<button on:click={createTask}>Создать</button>	
+	{error}		
 </div>
 <style type="text/css">
 	input{
