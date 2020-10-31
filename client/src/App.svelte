@@ -2,6 +2,8 @@
 	import router from 'page';
 	import { setContext } from 'svelte';
 	import Cookies from 'js-cookie';
+	import { user_store } from './stores/user.store.js';
+	import { getUser, tokenizeHeaders } from './helpers/user.helper.js';
 
 	import Home from './routing/Home.svelte'
 	import ErrorPage from './routing/ErrorPage.svelte'
@@ -13,41 +15,80 @@
 
 	// export let params; если надо в компоненте получить параметры со ссылки (:id / :user / :params)
 
-	setContext('server_url', "http://localhost:3000/");
-	setContext('std_headers', {
+	let server_url = "http://localhost:3000/";
+	const std_headers = {
 		'Accept': 'application/json',
 	    'Content-Type': 'application/json'
-	});
+	};
+	setContext('server_url', server_url);
+	setContext('std_headers', std_headers);
 
 	let page;
 	let params;
+	let token = Cookies.get('token');
 	function isToken() {
 		let token = Cookies.get('token');
-		if (token) {
-			return true;
-		}
+		return token ? true : false;
+	}
+	if (token) {
+		let headers = tokenizeHeaders(std_headers);
+		getUser({token: token, headers: headers, server_url: server_url});
 	}
 
+	const logged_only = [
+		'/student/home',
+		'/student/tasks',
+		'/teacher/home',
+		'/student/check'
+	];
+	const user_sub = user_store.subscribe(data => {
+		if (!isToken() || !data.id) {
+			if (logged_only.includes(router.current))
+				router.redirect(`/`);
+		}
+	});
+
 	router('/', () => (page = Home));
-	router('/student/home', () => (page = StudentHome));
-	router('/student/tasks', () => (page = StudentTasks));
-	router('/teacher/home', () => (page = TeacherHome));
-	router('/student/check', () => (page = Check));
+	router('/student/home', () => {
+		if (!isToken())
+			router.redirect('/');
+		else
+			page = StudentHome});
+	router('/student/tasks', () => {
+		if (!isToken())
+			router.redirect('/');
+		else
+			page = StudentTasks
+	});
+	router('/teacher/home', () => {
+		if (!isToken())
+			router.redirect('/');
+		else
+			page = TeacherHome;
+	});
+	router('/student/check', () => {
+		if (!isToken())
+			router.redirect('/');
+		else
+			page = Check
+	});
 	router('/login', () => {
 		router.redirect('/')
 	});
 	router('/login/:user_type', (ctx, next) => {params = ctx.params; next();}, () => {
 		if (isToken()) {
-			router.redirect('/')
-		}
-		page = Login;
+			router.redirect('/');
+		} else
+			page = Login;
 	});
 	router("*", () => (page = ErrorPage));
 
 	router.start();
 </script>
 
+
 <svelte:component this="{page}" params="{params}" />
+
 
 <style>
 	h1 {

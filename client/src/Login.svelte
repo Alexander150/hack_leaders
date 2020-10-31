@@ -47,7 +47,7 @@
 			if ('token' in result) {
 				Cookies.set('token', result.token);
 				user_store.update(state => result.user);
-				router.redirect('/')
+				router.redirect(`/${result.user.user_type}/home/`)
 				return;
 
 			} else if ('error' in result) {

@@ -1,4 +1,5 @@
 <script>
+  import Logout from '../../components/Logout.svelte';
   let code;
 
   function sendCode(){
@@ -8,6 +9,7 @@
   }
 </script>
 <section class="students-solution">	
+  <Logout/>
 	<div class="student__task">	
 		<div class="task">
 			<h1>Задача</h1>

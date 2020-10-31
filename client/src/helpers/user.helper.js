@@ -1,25 +1,24 @@
 import { getContext } from 'svelte';
+import { user_store } from '../stores/user.store.js';
 import Cookies from 'js-cookie';
 
-const server_url = getContext('server_url');
+export function getUser(d) {
 
-export function getUser() {
-
-
-	// let response = await fetch(`${server_url}user/`, {
-	// 	method: "GET",
-	// 	headers: headers
-	// });
-	// if (response.ok) {
-	// 	let result = await response.json();
-	// 	if (token in result) {
-	// 		Cookies.set('token', result.token);
-	// 		user_store.update(result.user);
-	// 		return;
-	// 	}
-	// }
-
-	return false;
+	fetch(`${d.server_url}auto_login/`, {
+		method: "GET",
+		headers: d.headers
+	}).then(response => {
+		if (response.ok)
+			return response.json();
+		else
+			return {'error': 'Возникла ошибка при загрузке данных'}
+	}).then(data => {
+		if (!data.error)
+			user_store.update(state => data);
+		else {
+			alert("Возникла ошибка! ");
+		}
+	});
 
 }
 
