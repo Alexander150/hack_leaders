@@ -60,19 +60,39 @@
 		Cookies.remove('token');
 		alert("Возникла ошибка");
 	}
-
 </script>
 
-<div>
-	<input type="text" name="login" bind:value={user.username} placeholder="Логин" on:blur={checkUser}>
-	<input type="password" name="password" bind:value={user.password} placeholder="Пароль">
-	{#if check.status}
-		<button on:click={signIn}>Войти</button>
-	{:else}
-		<button on:click={signUp}>Зарегистироваться</button>
-	{/if}
+<div class="login">
+	<h1>Вход</h1>
+	<div class="login__inputs">
+		<input type="text" name="login" bind:value={user.username} placeholder="Имя пользователя" on:blur={checkUser}>
+		<input type="password" name="password" bind:value={user.password} placeholder="Пароль">
+		{#if check.status}
+			<button class="button-white" on:click={signIn}>Войти</button>
+		{:else}
+			<button class="button-white" on:click={signUp}>Зарегистироваться</button>
+		{/if}
+	</div>
 </div>
 
-<style type="text/css" media="screen">
-	
-</style>
+<style>
+	.login{
+	}
+	.login__inputs input{
+		width: 546px;
+		height: 76px;
+		border: none;
+		background: #F7F4F8;
+	}
+	.button-white{
+		margin: 0;
+		padding: 10px 62px;
+		color: #3D1168;
+		font-size: 22px;
+		line-height: 26px;
+		text-align: center;
+		border: 3px solid #3D1168;
+		box-sizing: border-box;
+		border-radius: 50px;
+	}
+</style> 
