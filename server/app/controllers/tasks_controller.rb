@@ -12,8 +12,12 @@ class TasksController < ApplicationController
 		f.print("print(f("+input+"))\n")
 		f.close()
 
-		file1 = File.open('tmp/output.txt', 'w')
-		file1.print(`python3 tmp/ours_code.py `)
-		file1.close
+		# file1 = File.open('tmp/output.txt', 'w')
+		# file1.print(`python3 tmp/ours_code.py `)
+		a = `python3 tmp/ours_code.py `
+		if a == 40
+			print a
+		end
+		# file1.close
 	end
 end
