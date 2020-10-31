@@ -1,9 +1,7 @@
 class TasksController < ApplicationController
-	def create
-		@task = Task.create!(
-			title: params[:title], 
-			legend: params[:legend],
-			description: params[:description]
-		)
+	def check
+		file = File.new('./file.py')
+		file.print('print(1)')
+		file.close
 	end
 end

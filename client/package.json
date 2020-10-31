@@ -16,7 +16,11 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "codemirror": "^5.58.2",
+=======
     "js-cookie": "^2.2.1",
+>>>>>>> 3ec81b80fb75fb07d06393042a2b0ce44571d6c2
     "page": "^1.11.6",
     "sirv-cli": "^1.0.0"
   }
