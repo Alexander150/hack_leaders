@@ -1,3 +1,12 @@
+<script>
+  let code;
+
+  function sendCode(){
+    fetch("http://localhost:3000/tasks/check?code=" + code)
+    .then(r => r)
+    .then(r => console.log("true"))
+  }
+</script>
 <section class="student__task">	
 	<div class="task">
 		<h1>Задача</h1>
@@ -5,8 +14,9 @@
 	</div>   
 	<div class="solution"> 
 		<div class="solution__codemirror">
-			<textarea class="solution__text"></textarea>
+			<textarea class="solution__text" bind:value={code}></textarea>
 		</div>
+    <button on:click={sendCode}>Отправить</button>
 		<div class="solution__test">
 			<textarea class="solution__text"></textarea>
 		</div>
