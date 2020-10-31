@@ -6,6 +6,7 @@
 	import Home from './routing/Home.svelte'
 	import ErrorPage from './routing/ErrorPage.svelte'
 	import StudentHome from './routing/student/StudentHome.svelte'
+	import StudentTasks from './routing/student/StudentTasks.svelte'
 	import TeacherHome from './routing/teacher/TeacherHome.svelte'
 	import Login from './Login.svelte'
 	import Check from "./routing/student/Check.svelte"
@@ -29,6 +30,7 @@
 
 	router('/', () => (page = Home));
 	router('/student/home', () => (page = StudentHome));
+	router('/student/tasks', () => (page = StudentTasks));
 	router('/teacher/home', () => (page = TeacherHome));
 	router('/student/check', () => (page = Check));
 	router('/login', () => {
