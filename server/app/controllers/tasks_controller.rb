@@ -1,10 +1,12 @@
 class TasksController < ApplicationController
 	def check
-		File.open("out.py", "w+") {|file| 
-			file.write("print(2)")
-
+		File.open("code.py", "w+") {|file| 
+			file.write(params[:code])
 		}
-		'python out.py'
+		File.open("out.txt", "w+") {|file|
+			file.write("123")
+			# file.write(system('python code.py'))
+		}
 
 	end
 end
