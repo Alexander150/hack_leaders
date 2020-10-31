@@ -8,16 +8,22 @@ class TasksController < ApplicationController
 		f.print('')
 		f = File.open('tmp/ours_code.py', 'a')
 		f.print("from their_code import f\n")
-		input = "5, 8"
-		f.print("print(f("+input+"))\n")
+		@task = Task.find(1)
+		@tests = Test.where(task_id: @task.id)
+		@tests.each do |t|
+			input = t.inputs
+			f.print("print(f("+input+"))\n")
+		end
 		f.close()
 
-		# file1 = File.open('tmp/output.txt', 'w')
-		# file1.print(`python3 tmp/ours_code.py `)
-		a = `python3 tmp/ours_code.py `
-		if a == 40
-			print a
+		@tests.each do |t|
+			a = `python3 tmp/ours_code.py`
+			p a
 		end
-		# file1.close
+
+		# a = `python3 tmp/ours_code.py`
+		# if a == 40
+		# 	print a
+		# end
 	end
 end
