@@ -33,12 +33,10 @@
 		max-width: 750px;
 		margin: 0 auto;
 		padding: 40px;
-		background: linear-gradient(120.52deg, rgba(48, 22, 68, 0.41) 0.64%, rgba(0, 0, 0, 0.62) 100%);
-		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.02);
 		border-radius: 3px;
 	}
 	.my-tasks h1{
-		margin: 0 0 25px;
+		margin-bottom:16px;
 		font-size: 20px;
 		color: white;
 	}
@@ -52,13 +50,14 @@
 	.list__task{
 		display: flex;
 		justify-content: space-between;
-		background: #F1F4F7;
-		border: 0.1px solid #3D1168;
-		box-sizing: border-box;
+		color: white;
+		background: linear-gradient(120.52deg, rgba(48, 22, 68, 0.41) 0.64%, rgba(0, 0, 0, 0.62) 100%);
+		border: 3px solid #F1F4F7;
 		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.02);
+		border-radius: 20px;
 		max-width: 750px;
-		height: 65px;
-		margin:   5px 0;
+		height: 80px;
+		margin: 8px 0;
 	}
 	.task__about h2{
 		margin: 0;
@@ -76,10 +75,9 @@
 		text-align: center;
 		margin: auto 40px;
 		padding-top: 2px ;
-		color: black;
-		background: #FFFFFF;
-		border: 0.4px solid #3D1168;
-		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+		color: white;
+		background: linear-gradient(120.52deg, rgba(48, 22, 68, 0.41) 0.64%, rgba(0, 0, 0, 0.62) 100%);
+		border: 3px solid #F1F4F7;
 		border-radius: 6px;
 		width: 100%;
 		max-width: 180px;
