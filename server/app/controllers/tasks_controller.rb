@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
 	def check
 		file = File.open('tmp/their_code.py', 'w')
-		p params[:code]
 		file.print(params[:code])
 		file.close
 
@@ -17,9 +16,14 @@ class TasksController < ApplicationController
 		end
 		f.close()
 
-		@tests.each do |t|
-			a = `python3 tmp/ours_code.py`
-			p a
+		answer = `python3 tmp/ours_code.py`
+		answer_arr = answer.split("\n")
+		@tests.each_with_index do |t, i|
+			if t.outputs == answer_arr[i]
+				p true
+			else
+				p false
+			end
 		end
 
 		# a = `python3 tmp/ours_code.py`
