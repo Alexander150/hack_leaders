@@ -1,5 +1,7 @@
 <script>
 	import router from 'page';
+	import { setContext } from 'svelte';
+
 	import Home from './routing/Home.svelte'
 	import ErrorPage from './routing/ErrorPage.svelte'
 	import StudentHome from './routing/student/StudentHome.svelte'
@@ -7,6 +9,8 @@
 	import Login from './Login.svelte'
 
 	// export let params; если надо в компоненте получить параметры со ссылки (:id / :user / :params)
+
+	setContext('server_url', "http://localhost:3000/");
 
 	let page;
 	let params;

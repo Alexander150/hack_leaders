@@ -1,5 +1,9 @@
 <script>
+	import { getContext } from 'svelte';
+
 	export let params;
+
+	const server_url = getContext('server_url')
 
 	let user = {
 		user_type: params.user_type,
@@ -14,9 +18,8 @@
 
 	async function checkUser(){
 		// проверка на существование
-		const url = "http://localhost:3000/check";
 		console.log(user);
-		const response = await fetch(url, {
+		const response = await fetch(`${server_url}check/`, {
 			method: "POST",
 			headers: {
 				'Accept': 'application/json',
