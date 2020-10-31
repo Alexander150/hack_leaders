@@ -1,7 +1,5 @@
 class TasksController < ApplicationController
 	def check
-		file = File.new('./file.py')
-		file.print('print(1)')
-		file.close
+		File.open('./file.py', 'w+'){|f| f.write('print(1)')}
 	end
 end
