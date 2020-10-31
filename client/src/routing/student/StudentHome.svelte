@@ -1,19 +1,21 @@
-<section class="student__task">	
+<section class="students-solution">	
 	<div class="task">
 		<h1>Задача</h1>
-		<p>ЗЗад ачаЗа д чаЗад ачаЗад а ч а За дачаЗада чаЗа дачаЗада аЗадач аЗадач аЗада чаЗадач аvЗадачаЗада чаЗадачаЗаЗад  чаЗ дача адачаЗа    </p>
+		<div class="taks__description">Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи  </div>
 	</div>   
 	<div class="solution"> 
 		<div class="solution__codemirror">
+			<label> Мое решение:</label>
 			<textarea class="solution__text"></textarea>
 		</div>
 		<div class="solution__test">
+			<label> Проверка:</label>
 			<textarea class="solution__text"></textarea>
 		</div>
 	 </div>
 </section>
  <style>
-  .student__task {
+  .students-solution{
   	display: grid;
   	grid-template-areas: 
   	"task solution";
@@ -23,12 +25,19 @@
   	grid-area: "task";
   	text-align: center;
   }
-  textarea {
+  .solution__test textarea {
   	resize: none;
   	width: 95%;
   	height: 400px;
+  	margin: 10px;
   }
-  .task p{
+  .solution__codemirror textarea {
+  	resize: none;
+  	width: 95%;
+  	height: 400px;
+  	margin: 10px;
+  }
+  .task__description{
   	
   }
   .task h1{
