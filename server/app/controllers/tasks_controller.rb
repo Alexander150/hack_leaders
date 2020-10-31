@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
 	def check
 		file = File.open('tmp/their_code.py', 'w')
+		p params[:code]
 		file.print(params[:code])
 		file.close
 
@@ -8,7 +9,7 @@ class TasksController < ApplicationController
 		f.print('')
 		f = File.open('tmp/ours_code.py', 'a')
 		f.print("from their_code import f\n")
-		@task = Task.find(1)
+		@task = Task.find(2)
 		@tests = Test.where(task_id: @task.id)
 		@tests.each do |t|
 			input = t.inputs
