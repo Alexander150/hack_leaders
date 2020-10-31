@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   post '/login', to: "users#login"
   post '/check', to: "users#check_user"
   get '/auto_login', to: "users#auto_login"
-  get '/tasks/check', to: "tasks#check"
+  post '/tasks/check', to: "tasks#check"
+  get "tasks/:id", to: "tasks#get_task"
 end

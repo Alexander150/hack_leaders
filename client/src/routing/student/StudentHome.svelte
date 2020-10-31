@@ -1,29 +1,67 @@
 <script>
   import Logout from '../../components/Logout.svelte';
-  let code;
+  import {onMount} from 'svelte';
+  import { getContext } from 'svelte';
+  let headers = getContext('std_headers');
+  import { tokenizeHeaders } from '../../helpers/user.helper.js';
+  headers = tokenizeHeaders(headers);
+  export let params;
 
-  function sendCode(){
-    fetch("http://localhost:3000/tasks/check?code=" + code)
-    .then(r => r)
-    .then(r => console.log("true"))
+  let task = {
+    title: "",
+    legend: "",
+    description: "",
+    start_point: ""
+  };
+
+  let parameters = {
+    code: task.start_point,
+    task_id: params.id,
   }
+
+  onMount(async () => {
+    let response = await fetch("http://localhost:3000/tasks/" + params.id, {
+      method: "GET",
+      headers: headers
+    });
+    let answer = await response.json();
+    task = answer.task;
+    parameters.code = task.start_point;
+  });
+
+  let answers;
+
+  async function sendCode(){
+    let response = await fetch("http://localhost:3000/tasks/check", {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(parameters)
+    });
+    answers = await response.json();
+    answers = answers.answers.join(";\n");
+  }
+
+
 </script>
 <div class="coderoom">
   <Logout/>
 	<div class="student__task">	
 		<div class="task">
-			<h1>Задача</h1>
-			<div class="task__description">Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи 	Текст задачи Текст задачи Текст задачи  </div>
+			<h1>{task.title}</h1>
+      {#if task.legend}
+        <div>{task.legend}</div> <!-- РАСИМ ПОПРАВЬ ЛЕГЕНДУ, ЧТОБЫ ОНА БЫЛА ДО ОПИСАНИЯ -->
+      {/if}
+			<div class="task__description">{task.description}</div>
 		</div>   
 		<div class="solution"> 
 			<div class="solution__codemirror">
 				<label> Мое решение:</label>
-				<textarea class="solution__text" bind:value={code}></textarea>
+				<textarea class="solution__text" bind:value={parameters.code}></textarea>
 			</div>
 	    <button on:click={sendCode}>Отправить</button>
 			<div class="solution__test">
 				<label> Проверка:</label>
-				<textarea class="solution__text"></textarea>
+				<textarea class="solution__text" bind:value={answers}></textarea>
 			</div>
 			<div class="solution__buttonbar">
 				

@@ -7,14 +7,14 @@
 					<h2>Задача 1</h2>
 					<h3> Название задачи</h3>
 				</div>
-				<a href="/student/home" class="task__button">Начать решение </a>
+				<a href="/student/tasks/1" class="task__button">Начать решение </a>
 			</div>
 			<div class="list__task">
 				<div class="task__about">
 					<h2>Задача 2</h2>
 					<h3> Название задачи</h3>
 				</div>
-				<a href="/student/home" class="task__button">Начать решение </a>
+				<a href="/student/tasks/2" class="task__button">Начать решение </a>
 			</div>
 		</div>
 	</div>

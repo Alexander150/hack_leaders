@@ -49,7 +49,12 @@
 	});
 
 	router('/', () => (page = Home));
-	router('/student/home', () => {
+	router('/student/tasks/:id',
+	(ctx, next) => {
+		params = ctx.params;
+		next();
+	},
+	() => {
 		if (!isToken())
 			router.redirect('/');
 		else
