@@ -8,6 +8,7 @@
 	import StudentHome from './routing/student/StudentHome.svelte'
 	import TeacherHome from './routing/teacher/TeacherHome.svelte'
 	import Login from './Login.svelte'
+	import Check from "./routing/student/Check.svelte"
 
 	// export let params; если надо в компоненте получить параметры со ссылки (:id / :user / :params)
 
@@ -24,6 +25,7 @@
 	router('/', () => (page = Home));
 	router('/student/home', () => (page = StudentHome));
 	router('/teacher/home', () => (page = TeacherHome));
+	router('/student/check', () => (page = Check));
 	router('/login/:user_type', (ctx, next) => {params = ctx.params; next();}, () => {
 		if (isToken()) {
 			router.redirect('/')
