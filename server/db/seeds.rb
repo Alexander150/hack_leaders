@@ -7,9 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 user = User.create(username: "teacher", password: "password", user_type: "teacher")
 user = User.create(username: "student", password: "password", user_type: "student")
-Task.find(1).destroy
-task1 = Task.create(title: "Задача №1", description: "Написать функцию умножения 2х чисел")
-task2 = Task.create(title: "Задача №2", description: "Написать функцию сложения 2х чисел")
+task1 = Task.create(title: "Задача №1", description: "Написать функцию сложения 2х чисел")
+task2 = Task.create(title: "Задача №2", description: "Написать функцию умножения 2х чисел")
 task3 = Task.create(title: "Задача №3", legend: "Дан массив чисел.", description: "Написать функцию, которая создаст массив с четными числами и массив с нечетными числами")
 test1 = Test.create!(task_id: 1, inputs: "1, 2", outputs: "3")
 test2 = Test.create!(task_id: 1, inputs: "5, 10", outputs: "15")
