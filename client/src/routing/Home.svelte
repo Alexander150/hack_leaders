@@ -1,4 +1,18 @@
+<script>
+	import Logout from '../components/Logout.svelte';
+	import Cookies from 'js-cookie';
+
+	let logged = Cookies.get('token') ? true : false;
+
+	function onLogout(event) {
+		logged = false;
+	}
+</script>
+
 <div class="home">
+	{#if logged}
+		<Logout on:logout={onLogout}/>
+	{/if}
 	<div class="ts-container">
 		<a href="/login/teacher">
 			<div class="teacher">

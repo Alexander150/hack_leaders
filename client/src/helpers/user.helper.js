@@ -1,11 +1,7 @@
 import { getContext } from 'svelte';
+import Cookies from 'js-cookie';
 
 const server_url = getContext('server_url');
-
-let headers = {
-	'Accept': 'application/json',
-    'Content-Type': 'application/json'
-};
 
 export function getUser() {
 
@@ -25,4 +21,9 @@ export function getUser() {
 
 	return false;
 
+}
+
+export function tokenizeHeaders(headers) {
+	headers['Authorization'] = `Bearer ${Cookies.get('token')}`;
+	return headers;
 }
