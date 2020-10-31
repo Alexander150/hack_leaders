@@ -7,7 +7,7 @@ class TasksController < ApplicationController
 	end
 
 	def get_tasks
-		@tasks = Task.all
+		@tasks = Task.all.order(id: :asc)
 		render json: {tasks: @tasks}
 	end
 
@@ -22,7 +22,7 @@ class TasksController < ApplicationController
 		f.print("from their_code import f\n")
 		@task = Task.find(params[:task_id])
 		@tests = Test.where(task_id: @task.id)
-		@tests.each do |t|
+		@tests.order(id: :asc).each do |t|
 			input = t.inputs
 			f.print("print(f("+input+"))\n")
 		end
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
 
 		answer = `python3 tmp/ours_code.py`
 		answer_arr = answer.split("\n")
-		@tests.each_with_index do |t, i|
+		@tests.order(id: :asc).each_with_index do |t, i|
 			if t.outputs == answer_arr[i]
 				answer_arr[i] = "Test(f(" + t.inputs + "), " + t.outputs + ")"
 			else
