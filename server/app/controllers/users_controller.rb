@@ -15,9 +15,13 @@ class UsersController < ApplicationController
   def check_user
   	@user = User.find_by(username: params[:username])
   	if @user
-  		render json: {status: true}
+  		if @user.user_type == params[:user_type]
+	  		render json: {status: true, type: true}
+	  	else
+	  		render json: {status: false, type: false}
+	  	end
   	else
-  		render json: {status: false}
+  		render json: {status: false, type: true}
   	end
   end
 
