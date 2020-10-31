@@ -1,32 +1,41 @@
-<div class="ts-container">
-	<a href="/login/teacher">
-		<div class="teacher">
-			<img src="./images/teacher.svg" >
-			<h1> Я учитель</h1>
-			<h2> Создать тест, посмотреть результаты, изменить тест</h2>
-		</div>
-	</a>
-	<a href="/login/student">
-		<div class="student">
-			<img src="./images/student.svg">
-			<h1> Я ученик </h1>
-			<h2> Пройти тест, посмотреть результаты</h2>
-		</div>
-	</a>
-</div>
+<div class="home">
+	<div class="ts-container">
+		<a href="/login/teacher">
+			<div class="teacher">
+				<img src="./images/teacher.svg" >
+				<h1> Я учитель</h1>
+				<h2> Создать тест, посмотреть результаты, изменить тест</h2>
+			</div>
+		</a>
+		<a href="/login/student">
+			<div class="student">
+				<img src="./images/student.svg">
+				<h1> Я ученик </h1>
+				<h2> Пройти тест, посмотреть результаты</h2>
+			</div>
+		</a>
+	</div>
+</div>	
  <style type="text/css" media="screen">
  	a{
  		text-decoration: none;
  	}
+ 	.home{
+ 		width: 100vw;
+ 		height: 100vh;
+ 		background-image: url(../images/background.png);
+ 		background-size: cover;
+ 		background-repeat: no-repeat;
+ 	}
  	.ts-container{
- 		margin-top: 300px;
+ 		padding-top: 200px;
  		display: flex;
  		justify-content: center;
  	}
  	.ts-container .teacher{
  	 	margin: 10px;
- 		width: 400px;
- 		height:400px;
+ 		width: 450px;
+ 		height:450px;
  		border-radius: 20px;
  		background-color: rgba(61, 31, 84, 0.67) ;
  		text-align: center;
@@ -52,11 +61,12 @@
  	}
  	.ts-container .student{
  	 	margin:10px;
- 		width: 400px;
- 		height:400px;
+ 		width: 450px;
+ 		height:450px;
  		border-radius: 20px;
  		text-align: center;
- 		color: white; 		
+ 		color: white;
+ 		border: 3px solid white; 		
  		background-color: rgba(61, 31, 84, 0.67);
  		opacity: 50%;
  	}
