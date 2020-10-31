@@ -8,8 +8,8 @@ class TasksController < ApplicationController
 		f.print('')
 		f = File.open('tmp/ours_code.py', 'a')
 		f.print("from their_code import f\n")
-		f.print("arr = [1, 2, 3]\n")
-		f.print("print(f(arr))\n")
+		input = "5, 8"
+		f.print("print(f("+input+"))\n")
 		f.close()
 
 		file1 = File.open('tmp/output.txt', 'w')
