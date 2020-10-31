@@ -7,7 +7,10 @@
 		password: "",
 	}
 
-	let check = false;
+	let check = {
+		status: true,
+		type: true
+	};
 
 	async function checkUser(){
 		// проверка на существование
@@ -22,7 +25,8 @@
 			body: JSON.stringify(user)
 		});
 		const answer = await response.json();
-		check = answer.status;
+		check.status = answer.status;
+		check.type = answer.type;
 	}
 	function signUp(){
 		// send user to server to sign up him
@@ -38,10 +42,13 @@
 <div>
 	<input type="text" name="login" bind:value={user.username} placeholder="Логин" on:blur={checkUser}>
 	<input type="password" name="password" bind:value={user.password} placeholder="Пароль">
-	{#if check}
+	{#if check.status}
 		<button on:click={signIn}>Войти</button>
 	{:else}
 		<button on:click={signUp}>Зарегистироваться</button>
+	{/if}
+	{#if !check.type}
+		<a href="/login/student">Войти как ученик</a>
 	{/if}
 </div>
 
