@@ -1,21 +1,35 @@
+<script>
+  import Logout from '../../components/Logout.svelte';
+  import {onMount} from 'svelte';
+  import { getContext } from 'svelte';
+  let headers = getContext('std_headers');
+  import { tokenizeHeaders } from '../../helpers/user.helper.js';
+  headers = tokenizeHeaders(headers);
+
+  let tasks = [];
+
+  onMount(async () => {
+    let response = await fetch("http://localhost:3000/tasks", {
+      method: "GET",
+      headers: headers
+    });
+    let answer = await response.json();
+    tasks = answer.tasks;
+  });
+</script>
 <section class="student-tasks">
 	<div class="my-tasks">
 		<h1>Мои задачи:</h1>
 		<div class="my-tasks__list">
-			<div class="list__task">
-				<div class="task__about">
-					<h2>Задача 1</h2>
-					<h3> Название задачи</h3>
+			{#each tasks as task}
+				<div class="list__task">
+					<div class="task__about">
+						<h2>{task.title}</h2>
+						<h3>{task.description}</h3>
+					</div>
+					<a href="/student/tasks/{task.id}" class="task__button">Начать решение</a>
 				</div>
-				<a href="/student/tasks/1" class="task__button">Начать решение </a>
-			</div>
-			<div class="list__task">
-				<div class="task__about">
-					<h2>Задача 2</h2>
-					<h3> Название задачи</h3>
-				</div>
-				<a href="/student/tasks/2" class="task__button">Начать решение </a>
-			</div>
+			{/each}
 		</div>
 	</div>
 </section>
