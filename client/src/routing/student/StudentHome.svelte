@@ -1,4 +1,3 @@
-<section class="students-solution">	
 <script>
   let code;
 
@@ -8,23 +7,25 @@
     .then(r => console.log("true"))
   }
 </script>
-<section class="student__task">	
-	<div class="task">
-		<h1>Задача</h1>
-		<div class="taks__description">Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи  </div>
-	</div>   
-	<div class="solution"> 
-		<div class="solution__codemirror">
-			<label> Мое решение:</label>
-			<textarea class="solution__text"></textarea>
-			<textarea class="solution__text" bind:value={code}></textarea>
-		</div>
-    <button on:click={sendCode}>Отправить</button>
-		<div class="solution__test">
-			<label> Проверка:</label>
-			<textarea class="solution__text"></textarea>
-		</div>
-	 </div>
+<section class="students-solution">	
+	<div class="student__task">	
+		<div class="task">
+			<h1>Задача</h1>
+			<div class="taks__description">Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи Текст задачи 	Текст задачи Текст задачи Текст задачи  </div>
+		</div>   
+		<div class="solution"> 
+			<div class="solution__codemirror">
+				<label> Мое решение:</label>
+				<textarea class="solution__text"></textarea>
+				<textarea class="solution__text" bind:value={code}></textarea>
+			</div>
+	    <button on:click={sendCode}>Отправить</button>
+			<div class="solution__test">
+				<label> Проверка:</label>
+				<textarea class="solution__text"></textarea>
+			</div>
+		 </div>
+	</div>
 </section>
  <style>
   .students-solution{
