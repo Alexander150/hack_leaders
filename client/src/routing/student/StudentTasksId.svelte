@@ -31,7 +31,7 @@
       headers: headers
     });
     let answer = await response.json();
-    let answer2 = await.response2.json();
+    let answer2 = await response2.json();
     task = answer.task;
     langs = answer2.langs;
     parameters.code = task.start_point;

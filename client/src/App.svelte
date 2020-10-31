@@ -38,7 +38,7 @@
 	const logged_only = [
 		'/student/home',
 		'/student/tasks',
-		'/teacher/home',
+		'/teacher/tasks',
 		'/student/check'
 	];
 	const user_sub = user_store.subscribe(data => {
@@ -65,7 +65,7 @@
 		else
 			page = StudentTasks
 	});
-	router('/teacher/home', () => {
+	router('/teacher/tasks', () => {
 		if (!isToken())
 			router.redirect('/');
 		else
