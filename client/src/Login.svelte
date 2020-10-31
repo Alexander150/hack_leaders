@@ -1,14 +1,16 @@
 <script>
 	import { getContext } from 'svelte';
+	import Cookies from 'js-cookie';
+	import { user_store } from './user.store.js';
 
 	export let params;
 
-	const server_url = getContext('server_url')
+	const server_url = getContext('server_url');
 
 	let user = {
 		user_type: params.user_type,
-		username: "",
-		password: "",
+		username: "student",
+		password: "password",
 	}
 
 	let check = {
@@ -16,15 +18,17 @@
 		type: true
 	};
 
+	let headers = {
+		'Accept': 'application/json',
+	    'Content-Type': 'application/json'
+	};
+
 	async function checkUser(){
 		// проверка на существование
 		console.log(user);
 		const response = await fetch(`${server_url}check/`, {
 			method: "POST",
-			headers: {
-				'Accept': 'application/json',
-			    'Content-Type': 'application/json'
-			},
+			headers: headers,
 			body: JSON.stringify(user)
 		});
 		const answer = await response.json();
@@ -35,9 +39,22 @@
 		// send user to server to sign up him
 		console.log(user);
 	}
-	function signIn(){
-		// send user to server to sign in him
-		console.log(user);
+	async function signIn(){
+		let response = await fetch(`${server_url}login/`, {
+			method: "POST",
+			headers: headers,
+			body: JSON.stringify(user)
+		});
+		if (response.ok) {
+			let result = await response.json();
+			if (token in result) {
+				Cookies.set('token', result.token);
+				user_store.update(result.user);
+				return;
+			}
+		}
+
+		alert("Возникла ошибка");
 	}
 
 </script>
