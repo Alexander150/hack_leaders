@@ -41,7 +41,6 @@
 		'/student/tasks',
 		'/teacher/tasks',
 		'/teacher/tasks/create',
-		'/teacher/tasks/:id/update',
 		'/student/check'
 	];
 	const user_sub = user_store.subscribe(data => {

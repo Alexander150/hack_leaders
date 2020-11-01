@@ -1,5 +1,5 @@
 <script>
-  import Logout from '../../components/Logout.svelte';
+  // import Logout from '../../components/Logout.svelte';
   import Menu from '../../components/Menu.svelte';
   import {onMount} from 'svelte';
   import { getContext } from 'svelte';
