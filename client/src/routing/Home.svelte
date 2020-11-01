@@ -1,5 +1,5 @@
 <script>
-	import Logout from '../components/Logout.svelte';
+	// import Logout from '../components/Logout.svelte';
 	import Cookies from 'js-cookie';
 
 	let logged = Cookies.get('token') ? true : false;
@@ -10,9 +10,9 @@
 </script>
 
 <div class="home">
-	{#if logged}
+	<!-- {#if logged}
 		<Logout on:logout={onLogout}/>
-	{/if}
+	{/if} -->
 	<div class="ts-container">
 		<a href="/login/teacher">
 			<div class="teacher">

@@ -30,14 +30,14 @@ class TasksController < ApplicationController
 
 	def check
 
-		mode = 'python'
+		mode = params[:lang]
 
-		if mode == 'python'
+		if mode == 'Python'
 			cmd = 'python3'
 			postfix = '.py'
 			import = "from their_code import f"
 
-		elsif mode == 'ruby'
+		elsif mode == 'Ruby'
 			cmd = 'ruby'
 			postfix = '.rb'
 			import = "require_relative \"their_code\"\ninclude TheirCode\n"
