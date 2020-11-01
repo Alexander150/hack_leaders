@@ -54,9 +54,9 @@
     answers = answers.answers.join(";\n");
   }
 </script>
-<Menu />
 <div class="coderoom">
   <!-- <Logout/> -->
+  <Menu />
 	<div class="student__task">	
     <h1>Название темы</h1>
 		<div class="task">
@@ -97,6 +97,8 @@
  <style>
  *{box-sizing: border-box;}
  .coderoom{
+  display: grid;
+  grid-template-columns: 120px 1fr;
  	width: 100vw;
  	height: 100vh;
  	background-image: url(../images/tasksback.png);
