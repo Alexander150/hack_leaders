@@ -18,8 +18,8 @@
     tasks = answer.tasks;
   });
 </script>
-<Menu />
-<section class="student-tasks">
+<div class="student-tasks">
+  <Menu />
   <div class="my-tasks">
     <h1>Мои задачи:</h1>
     <div class="my-tasks__list">
@@ -34,10 +34,11 @@
       {/each}
     </div>
   </div>
-</section>
+</div>
 <style>
   .student-tasks{
-    padding: 100px 0;
+    display: grid;
+    grid-template-columns: 120px 1fr;
     width: 100vw;
     height: 100vh;
     background-image: url(../images/studenttasks.png);
