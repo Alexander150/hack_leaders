@@ -1,5 +1,4 @@
 <script>
-	import { beforeUpdate, afterUpdate } from 'svelte';
 	import { getContext } from 'svelte';
 	let headers = getContext('std_headers');
 	import { tokenizeHeaders } from '../../helpers/user.helper.js';
