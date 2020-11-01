@@ -37,13 +37,14 @@
 	}
 
 	const logged_only = [
-		'/student/home',
-		'/student/tasks',
-		'/teacher/tasks',
-		'/teacher/tasks/create',
-		'/student/check'
+		'/student/home/',
+		'/student/tasks/',
+		'/teacher/tasks/',
+		'/teacher/tasks/create/',
+		'/student/check/'
 	];
 	const user_sub = user_store.subscribe(data => {
+		console.log(router.current);
 		if (!isToken() || !data) {
 			if (logged_only.includes(router.current))
 				router.redirect(`/`);
