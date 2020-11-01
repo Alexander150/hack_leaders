@@ -56,32 +56,38 @@
 <div class="coderoom">
   <!-- <Logout/> -->
 	<div class="student__task">	
+    <h1>Название темы</h1>
 		<div class="task">
-			<h1>{task.title}</h1>
-			<div class="task__block">
+      <div class="task__header">
+			   <h2>{task.title}</h2>
+         <div class="task__timer" >Оставшееся время: <span>25:43</span></div>
+      </div>
         {#if task.legend}
           <div class="task__legend">{task.legend}</div>
         {/if}
         <div class="task__description">{task.description}</div>
-      </div>
 		</div>  
-    <select id="lang" name="langs" on:change={setLang}>
-      {#each langs as lang}
-        <option value={lang.name}>{lang.name}</option>
-      {/each}
-    </select> 
 		<div class="solution"> 
 			<div class="solution__codemirror">
-				<label> Мое решение:</label>
+        <div class="solution__header">
+				  <h2>Решение</h2>
+          <select id="lang" name="langs" on:change={setLang}>
+            <option selected>Выберите язык</option>
+              {#each langs as lang}
+                <option value={lang.name}>{lang.name}</option>
+              {/each}
+          </select>
+        </div>
 				<textarea class="solution__text" bind:value={parameters.code}></textarea>
 			</div>
-	    <button on:click={sendCode}>Отправить</button>
-			<div class="solution__test">
-				<label> Проверка:</label>
+      <div class="solution__result">
+        <h2>Результат</h2>			
 				<textarea class="solution__text" bind:value={answers}></textarea>
-			</div>
-			<div class="solution__buttonbar">
-				
+			   <div class="buttonsbar">       
+          <button class="button-white" on:click={sendCode}>Тест</button>
+          <button class="button-purple">Отправить</button>
+        </div>
+
 			</div>
 		 </div>
 	</div>
@@ -89,10 +95,9 @@
  <style>
  *{box-sizing: border-box;}
  .coderoom{
- 	background-color: black;
  	width: 100vw;
  	height: 100vh;
- 	background-image: url(../images/studentcoderoom.png);
+ 	background-image: url(../images/tasksback.png);
  	background-size: cover;
  	background-position: center;
  	background-repeat: no-repeat;
@@ -101,27 +106,54 @@
   	height: 100%;
   	width: 100%;
   	display: grid;
-  	grid-template-areas: 
-  	"task solution";
-  	grid-template-columns: 1fr 1fr ;
+  	grid-template-rows: 1fr 1fr;
+  }
+  .solution__header{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+  }
+  .solution__header h2{
+    color: #373B53;
+    margin: 0;
+    padding: 29px 0;
   }
   .task{
-  	grid-area: "task";
+    color: #373B53;
   	width: 95%;
   	margin: 0 auto;
+    border-radius: 10px;
+    border: 3px solid #F1F4F7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.02);
+    text-align: left;
+    height: 100%;
+    max-height: 810px;
+    border-radius: 5px;
+    padding: 40px;
   }
   .solution {
   	width: 95%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
-  .solution__test textarea {
-  	color: white;
-  	border: 3px solid #F1F4F7;
-  	border-radius: 5px;
-  	background: #2C2C2C;
+  .solution__result textarea {
+    color: #373B53;
+    border-radius: 10px;
+    border: 3px solid #F1F4F7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.02);
   	resize: none;
   	width: 100%;
   	height: 300px;
-  	margin: 10px 0;
+  	margin: 15px 0;
+  }
+  .solution__result{
+    background-color: white;
+    margin-left: 40px;
+  }
+  .solution__result h2{
+    font-weight: 800;
+    color: #3D1168;
+    font-size: 30px;
   }
   .solution label{
   	color: white;
@@ -129,31 +161,83 @@
    	margin-top:calc(40px - 10px + 5px - 1em);
   }
   .solution__codemirror textarea {
-  	color: white;
-  	border-radius: 5px;
-  	background: #2C2C2C;
-  	border: 3px solid #F1F4F7;
+    color: #373B53;
+    border-radius: 10px;
+    border: 3px solid #F1F4F7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.02);
   	resize: none;
   	width: 100%;
   	height: 400px;
   	margin: 10px 0;
   }
-  .task__block{
-  	color: white;
-  	border: 3px solid #F1F4F7;
-  	text-align: left;
-  	height: 100%;
-  	max-height: 810px;
-  	border-radius: 5px;
-  	background: #2C2C2C;
-  	padding: 40px;
+  .solution__codemirror{
+    margin-left: 35px; 
   }
-  .task h1{
-  	color: white;
+  .task h2{
+    color: #373B53;
   	margin: 0;
-  	font-size: 40px;
+  	font-size: 30px;
   }
    .solution{
-  	grid-area: "solution";
+  }
+  .task__legend{
+    font-size: 20px;
+    padding: 50px 0;
+  }
+  .task__description{
+    font-size: 20px;
+  }
+  .task__header{
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .solution__header select{
+    border: none;
+    color:#373B53;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .solution__header h2{
+    font-weight: 800;
+    color: #373B53;
+    font-size: 30px;
+  }
+  .task__header span{
+    color: #3D1168;
+    font-weight: 800;
+  }
+  .student__task h1{
+    color:#373B53;
+    font-weight: 800;
+    font-size: 40px;
+    margin-left: 35px;
+  }
+  .button-white{
+    align-self: center;
+    text-align: center;
+    background: white;
+    margin: 0;
+    padding: 16px 50px;
+    color: #3D1168;
+    font-size: 22px;
+    line-height: 26px;
+    text-align: center;
+    border: 3px solid #3D1168;
+    box-sizing: border-box;
+    border-radius: 50px;
+  }
+  .button-purple{
+    background: none;
+    background:#3D1168;
+    margin: 0;
+    padding: 16px 50px;
+    color: white;
+    font-size: 22px;
+    line-height: 26px;
+    text-align: center;
+    border: 3px solid white;
+    box-sizing: border-box;
+    border-radius: 50px;
   }
  </style>
