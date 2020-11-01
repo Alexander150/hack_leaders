@@ -10,6 +10,7 @@
 	import StudentTasksId from './routing/student/StudentTasksId.svelte'
 	import StudentTasks from './routing/student/StudentTasks.svelte'
 	import TeacherHome from './routing/teacher/TeacherHome.svelte'
+	import TeacherTasks from './routing/teacher/TeacherTasks.svelte'
 	import Login from './Login.svelte'
 	import Check from "./routing/student/Check.svelte"
 
@@ -39,6 +40,8 @@
 		'/student/home',
 		'/student/tasks',
 		'/teacher/tasks',
+		'/teacher/tasks/create',
+		'/teacher/tasks/:id/update',
 		'/student/check'
 	];
 	const user_sub = user_store.subscribe(data => {
@@ -66,6 +69,12 @@
 			page = StudentTasks
 	});
 	router('/teacher/tasks', () => {
+		if (!isToken())
+			router.redirect('/');
+		else
+			page = TeacherTasks;
+	});
+	router('/teacher/tasks/create', () => {
 		if (!isToken())
 			router.redirect('/');
 		else
