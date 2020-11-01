@@ -21,6 +21,7 @@
 </div>
 
 <style>
+	*{box-sizing: border-box;}
 	.menu{
 		background-image: url(../images/menu.png);
 		background-size: 100%;
@@ -66,14 +67,21 @@
 		background-image: url(../images/chart.svg);
 		background-size: 100%;
 	}
-	.menu .logout{
-		margin-bottom: 53px;
-		margin-top: auto;
-		margin-left: 48px;
-		margin-right: 48px;
+	.menu .logout{ 
+		margin:  300px auto 0;
 		width: 24px;
-		height: 24px;
+		height: 124px;
 		background-image: url(../images/logout.svg);
-		background-size: 100%;
+		background-position: 100% 50%;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	.menu .logout::after{
+		content: '';
+     	margin-left: -40px; 
+      	display: block;
+      	height: 1px;
+      	width: 100px;
+      	background: #494E67;
 	}	
-</style>
+</style>	
