@@ -1,5 +1,6 @@
 <script>
   import Logout from '../../components/Logout.svelte';
+  import Menu from '../../components/Menu.svelte';
   import {onMount} from 'svelte';
   import { getContext } from 'svelte';
   let headers = getContext('std_headers');
@@ -17,6 +18,7 @@
     tasks = answer.tasks;
   });
 </script>
+<Menu />
 <section class="student-tasks">
 	<div class="my-tasks">
 		<h1>Мои задачи:</h1>
