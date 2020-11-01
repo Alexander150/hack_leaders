@@ -61,30 +61,74 @@
 		alert("Возникла ошибка");
 	}
 </script>
-
-<div class="login">
-	<h1>Вход</h1>
-	<div class="login__inputs">
-		<input type="text" name="login" bind:value={user.username} placeholder="Имя пользователя" on:blur={checkUser}>
-		<input type="password" name="password" bind:value={user.password} placeholder="Пароль">
-		{#if check.status}
-			<button class="button-white" on:click={signIn}>Войти</button>
-		{:else}
-			<button class="button-white" on:click={signUp}>Зарегистироваться</button>
-		{/if}
+<div class="identify">
+	<div class="login">
+		<h1>Вход</h1>
+		<div class="login__inputs">
+			<input type="text" class="loginicon" name="login" bind:value={user.username} placeholder="Имя пользователя" on:blur={checkUser}>
+			<input type="password" class="passwordicon" name="password" bind:value={user.password} placeholder="Пароль">
+			<div class="login__button">
+				{#if check.status}
+					<button class="button-white" on:click={signIn}>Войти</button>
+				{:else}
+					<button class="button-white" on:click={signUp}>Зарегистироваться</button>
+				{/if}
+			</div>
+		</div>
+	</div>
+	<div class="purple-block">
+		<h1>Создайте аккаунт</h1>
+		<h2>Зарегистрируйтесь и создайте свой тест!</h2>
+		<button class="button-purple">Регистрация</button>
 	</div>
 </div>
-
 <style>
+	*{box-sizing: border-box;}
+	.identify{
+		display: grid;
+		grid-template-columns: 1fr 0.8fr;
+	}
 	.login{
+		padding-top: 250px;
+		margin: 0 auto;
+		
+	}
+	.login h1{
+		margin: 0;
+		text-align: center;
+		color: #373B53;
+		font-size: 45px;
+	}
+	.loginicon{
+		background-image: url(../images/placeholderuser.svg);
+ 		background-position: 10px 50%;
+ 		background-repeat: no-repeat;
+
+	}
+	.passwordicon{
+		background-image:  url(../images/placeholderlock.svg);
+		background-repeat: no-repeat;
+		background-position: 10px 50%;
+	}
+	.login__inputs{
+		padding-top: 60px ;
 	}
 	.login__inputs input{
+		padding-left: 76px;
+		display: block;
 		width: 546px;
 		height: 76px;
 		border: none;
-		background: #F7F4F8;
+		background-color: #F7F4F8;
+	}
+	.login__button{
+		padding-top: 80px;
+		display: flex;
+		justify-content: center;
 	}
 	.button-white{
+		align-self: center;
+		text-align: center;
 		margin: 0;
 		padding: 10px 62px;
 		color: #3D1168;
@@ -95,4 +139,39 @@
 		box-sizing: border-box;
 		border-radius: 50px;
 	}
+	.button-purple{
+		background: none;
+		margin: 0;
+		padding: 10px 62px;
+		color: white;
+		font-size: 22px;
+		line-height: 26px;
+		text-align: center;
+		border: 3px solid white;
+		box-sizing: border-box;
+		border-radius: 50px;
+	}
+	.purple-block{
+		text-align: center;
+ 		height: 100vh;
+		background-image: url(../images/purpleback.png);
+ 		background-size: cover;
+ 		background-position: center;
+ 		background-repeat: no-repeat;
+	}
+	.purple-block h1{
+		font-size: 45px;
+		padding-top: 350px;
+		margin: 0;
+		color: white;
+
+	}
+	.purple-block h2{
+		font-size: 24px;
+		max-width: 300px;
+		padding: 30px 0 76px;
+		font-weight: 100;
+		margin: 0 auto;
+		color: white;
+	}	
 </style> 
