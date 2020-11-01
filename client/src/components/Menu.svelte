@@ -1,9 +1,23 @@
+<script>
+	import Cookies from 'js-cookie';
+	import { createEventDispatcher } from 'svelte';
+	import { user_store } from '../stores/user.store.js';
+
+	const dispatch = createEventDispatcher();
+
+	function logout() {
+		Cookies.remove('token');
+		user_store.set({});
+		dispatch('logout');
+	}
+</script>
+
 <div class="menu">
 	<div class="mk">#МК</div>
 	<div class="person"></div>
 	<div class="curr_page_menu"></div>
 	<div class="chart"></div>
-	<div class="logout"></div>
+	<div on:click={logout} class="logout"></div>
 </div>
 
 <style>
@@ -61,5 +75,5 @@
 		height: 24px;
 		background-image: url(../images/logout.svg);
 		background-size: 100%;
-	}
+	}	
 </style>
