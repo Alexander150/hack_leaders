@@ -107,10 +107,10 @@
  	background-repeat: no-repeat;
  }
   .student__task{
-  	height: 100%;
+  	height: 100vh;
   	width: 100%;
   	display: grid;
-  	grid-template-rows: 1fr 1fr;
+  	grid-template-rows:  1fr 1fr;
   }
   .solution__header{
     background-color: white;

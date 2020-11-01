@@ -35,29 +35,36 @@
 	}
 
 </script>
+<div class="teacher-container">
 <Menu />
-<div>
-	<div class="tasks__creator">
-		<label>Название задачи*</label>
-		<input type="text" class="name" bind:value={task.title}>
-		<label>Легенда задачи</label>
-		<input type="text" class="legend" bind:value={task.legend}>
-		<label>Условие задачи*</label>
-		<input type="text" class="description" bind:value={task.description}>
-	</div>
-	{#each tests as test}
-		<div class="tasks__checker">
-			<label> Выходные данные:</label>
-			<input type="text" class="input" bind:value={test.inputs}>
-			<label> Выходные данные:</label>
-			<input type="text" class="output" bind:value={test.outputs}>
+	<div>
+		<div class="tasks__creator">
+			<label>Название задачи*</label>
+			<input type="text" class="name" bind:value={task.title}>
+			<label>Легенда задачи</label>
+			<input type="text" class="legend" bind:value={task.legend}>
+			<label>Условие задачи*</label>
+			<input type="text" class="description" bind:value={task.description}>
 		</div>
-	{/each}	
-	<button on:click={createTest}>Создать новый тест</button>	
-	<button on:click={createTask}>Создать</button>	
-	{error}		
+		{#each tests as test}
+			<div class="tasks__checker">
+				<label> Выходные данные:</label>
+				<input type="text" class="input" bind:value={test.inputs}>
+				<label> Выходные данные:</label>
+				<input type="text" class="output" bind:value={test.outputs}>
+			</div>
+		{/each}	
+		<button on:click={createTest}>Создать новый тест</button>	
+		<button on:click={createTask}>Создать</button>	
+		{error}		
+	</div>
 </div>
 <style type="text/css">
+	.teacher-container{
+		display: grid;
+		grid-template-columns: 120px 1fr;
+		height: 100vh;
+	}
 	input{
 		size: 40;
 	}
