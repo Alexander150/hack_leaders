@@ -101,14 +101,14 @@
 	}
 	.loginicon{
 		background-image: url(../images/placeholderuser.svg);
- 		background-position: 10px 50%;
+ 		background-position: 30px 50%;
  		background-repeat: no-repeat;
 
 	}
 	.passwordicon{
 		background-image:  url(../images/placeholderlock.svg);
 		background-repeat: no-repeat;
-		background-position: 10px 50%;
+		background-position: 30px 50%;
 	}
 	.login__inputs{
 		padding-top: 60px ;
@@ -119,7 +119,7 @@
 		width: 546px;
 		height: 76px;
 		border: none;
-		background-color: #F7F4F8;
+		background-color: #F9F9F9;
 	}
 	.login__button{
 		padding-top: 80px;
@@ -129,8 +129,9 @@
 	.button-white{
 		align-self: center;
 		text-align: center;
+		background: white;
 		margin: 0;
-		padding: 10px 62px;
+		padding: 20px 62px;
 		color: #3D1168;
 		font-size: 22px;
 		line-height: 26px;
@@ -142,7 +143,7 @@
 	.button-purple{
 		background: none;
 		margin: 0;
-		padding: 10px 62px;
+		padding: 20px 62px;
 		color: white;
 		font-size: 22px;
 		line-height: 26px;

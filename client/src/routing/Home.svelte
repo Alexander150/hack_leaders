@@ -16,14 +16,12 @@
 	<div class="ts-container">
 		<a href="/login/teacher">
 			<div class="teacher">
-				<img src="./images/teacher.svg" >
 				<h1> Я учитель</h1>
 				<h2> Создать тест, посмотреть результаты, изменить тест</h2>
 			</div>
 		</a>
 		<a href="/login/student">
 			<div class="student">
-				<img src="./images/student.svg">
 				<h1> Я ученик </h1>
 				<h2> Пройти тест, посмотреть результаты</h2>
 			</div>
@@ -37,8 +35,9 @@
  	.home{
  		width: 100vw;
  		height: 100vh;
- 		background-image: url(../images/background.png);
+ 		background-image: url(../images/homeback.png);
  		background-size: cover;
+ 		background-position: center;
  		background-repeat: no-repeat;
  	}
  	.ts-container{
@@ -50,44 +49,60 @@
  	 	margin: 10px;
  		width: 450px;
  		height:450px;
- 		border-radius: 20px;
- 		background-color: rgba(61, 31, 84, 0.67) ;
+ 		border: 3px solid white;
+ 		background: linear-gradient(136.82deg, rgba(61, 17, 104, 0.5) 2.35%, rgba(0, 0, 0, 0.265) 100%);
+		border-radius: 20px;
  		text-align: center;
  		color: white;
  		border: 3px solid white;
- 		opacity: 50%;
+ 		transition-duration: .5s;
+ 		background-image: url(../images/teacher.svg);
+ 		background-position: 50% 28%;
+ 		background-repeat: no-repeat;
  	}
- 	.ts-container .teacher img {
- 		margin: 100px auto 20px;
+ 	.ts-container .teacher:hover{
+ 		background-image: url(../images/hoverteacher.svg);
+ 		background-color: white;
+ 		background-position: 50% 28%;
+ 		background-repeat: no-repeat;
+ 		color: #373B53;
  	}
  	.ts-container .teacher h1 {
  		margin: 0;
  		font-size: 30px;
- 		padding: 25px 0;
+ 		padding: 225px 0 25px;
  	}
  	.ts-container .teacher h2 {
  		max-width: 250px;
  		margin: 0 auto;
  		font-size: 20px;
  	}
- 	.ts-container .student img {
- 		margin: 100px auto 20px;
- 	}
  	.ts-container .student{
- 	 	margin:10px;
+ 	 	margin: 10px;
  		width: 450px;
  		height:450px;
- 		border-radius: 20px;
+ 		border: 3px solid white;
+ 		background: linear-gradient(136.82deg, rgba(61, 17, 104, 0.5) 2.35%, rgba(0, 0, 0, 0.265) 100%);
+		border-radius: 20px;
  		text-align: center;
  		color: white;
- 		border: 3px solid white; 		
- 		background-color: rgba(61, 31, 84, 0.67);
- 		opacity: 50%;
+ 		border: 3px solid white;
+ 		transition-duration: .5s;
+ 		background-image: url(../images/student.svg);
+ 		background-position: 50% 28%;
+ 		background-repeat: no-repeat;
+ 	}
+ 	.ts-container .student:hover{
+ 		background-image: url(../images/hoverstudent.svg);
+ 		background-color: white;
+ 		background-position: 50% 28%;
+ 		background-repeat: no-repeat;
+ 		color: #373B53;
  	}
  	.ts-container .student h1 {
  		margin: 0;
  		font-size: 30px;
- 		padding-bottom: 25px;
+ 		padding:225px 0 25px;
  	}
  	.ts-container .student h2 {
  		max-width: 250px;
