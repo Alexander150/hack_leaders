@@ -1,4 +1,5 @@
 <script>
+	import Menu from '../../components/Menu.svelte';
 	import { getContext } from 'svelte';
 	let headers = getContext('std_headers');
 	import { tokenizeHeaders } from '../../helpers/user.helper.js';
@@ -34,6 +35,7 @@
 	}
 
 </script>
+<Menu />
 <div>
 	<div class="tasks__creator">
 		<label>Название задачи*</label>
