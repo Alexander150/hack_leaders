@@ -1,5 +1,6 @@
 <script>
  // import Logout from '../../components/Logout.svelte';
+ import Menu from '../../components/Menu.svelte';
   import {onMount} from 'svelte';
   import { getContext } from 'svelte';
   let headers = getContext('std_headers');
@@ -53,6 +54,7 @@
     answers = answers.answers.join(";\n");
   }
 </script>
+<Menu />
 <div class="coderoom">
   <!-- <Logout/> -->
 	<div class="student__task">	
@@ -78,7 +80,7 @@
               {/each}
           </select>
         </div>
-				<textarea class="solution__text" bind:value={parameters.code}></textarea>
+				<!-- <textarea class="solution__text" bind:value={parameters.code}></textarea> -->
 			</div>
       <div class="solution__result">
         <h2>Результат</h2>			
