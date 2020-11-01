@@ -80,7 +80,7 @@
               {/each}
           </select>
         </div>
-				<!-- <textarea class="solution__text" bind:value={parameters.code}></textarea> -->
+				<textarea class="solution__text" bind:value={parameters.code}></textarea>
 			</div>
       <div class="solution__result">
         <h2>Результат</h2>			
