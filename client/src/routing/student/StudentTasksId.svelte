@@ -6,6 +6,8 @@
   import { tokenizeHeaders } from '../../helpers/user.helper.js';
   headers = tokenizeHeaders(headers);
   export let params;
+  let answers;
+  let langs = [];
 
   let task = {
     title: "",
@@ -18,8 +20,6 @@
     code: task.start_point,
     task_id: params.id,
   }
-
-  let langs = [];
 
   onMount(async () => {
     let response = await fetch("http://localhost:3000/tasks/" + params.id, {
@@ -34,10 +34,14 @@
     let answer2 = await response2.json();
     task = answer.task;
     langs = answer2.langs;
-    parameters.code = task.start_point
+    parameters.code = task.start_point;
+    parameters.lang = langs[0].name;
   });
 
-  let answers;
+  function setLang(){
+    let select = document.getElementById("lang");
+    parameters.lang = select.value;
+  }
 
   async function sendCode(){
     let response = await fetch("http://localhost:3000/tasks/check", {
@@ -48,8 +52,6 @@
     answers = await response.json();
     answers = answers.answers.join(";\n");
   }
-
-
 </script>
 <div class="coderoom">
   <!-- <Logout/> -->
@@ -58,11 +60,16 @@
 			<h1>{task.title}</h1>
 			<div class="task__block">
         {#if task.legend}
-          <div class="task__legend">{task.legend}</div> <!-- РАСИМ ПОПРАВЬ ЛЕГЕНДУ, ЧТОБЫ ОНА БЫЛА ДО ОПИСАНИЯ -->
+          <div class="task__legend">{task.legend}</div>
         {/if}
         <div class="task__description">{task.description}</div>
       </div>
-		</div>   
+		</div>  
+    <select id="lang" name="langs" on:change={setLang}>
+      {#each langs as lang}
+        <option value={lang.name}>{lang.name}</option>
+      {/each}
+    </select> 
 		<div class="solution"> 
 			<div class="solution__codemirror">
 				<label> Мое решение:</label>
